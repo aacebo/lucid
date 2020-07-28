@@ -10,7 +10,7 @@ export default function NotFound() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <h1>Page not found!</h1>
       </main>
     </div>
