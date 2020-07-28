@@ -18,3 +18,9 @@ export default function Index() {
     </div>
   );
 }
+
+export async function getStaticProps() {
+  return {
+    props: { },
+  };
+}
