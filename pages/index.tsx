@@ -1,14 +1,12 @@
 import Head from 'next/head';
 
-import pkg from '../package.json';
-
 import styles from './index.module.scss';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{pkg.name}</title>
+        <title>Lucid: Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
