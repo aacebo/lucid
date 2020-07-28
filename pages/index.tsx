@@ -6,7 +6,7 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Lucid: Home</title>
+        <title>Lucid: Welcome</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
