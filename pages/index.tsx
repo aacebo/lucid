@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+
 import { Button, Card, CardContent, CardMedia } from '@material-ui/core';
 import { BuildOutlined, ShareOutlined, VisibilityOutlined, DoubleArrow } from '@material-ui/icons';
 
@@ -8,10 +9,6 @@ import AppIcon from '../components/app-icon/app-icon';
 import styles from './index.module.scss';
 
 export default function Index() {
-  const click = () => {
-    console.log('clicked');
-  }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -75,7 +72,7 @@ export default function Index() {
         </Card>
       </main>
 
-      <footer className={styles.footer} onClick={click}>
+      <footer className={styles.footer}>
       </footer>
     </div>
   );
