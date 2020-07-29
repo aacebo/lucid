@@ -6,7 +6,6 @@ import { BuildOutlined, ShareOutlined, VisibilityOutlined, DoubleArrow } from '@
 import AppIcon from '../components/app-icon/app-icon';
 
 import styles from './index.module.scss';
-import './index.module.scss';
 
 export default function Index() {
   const click = () => {
