@@ -7,7 +7,6 @@ export default function NotFound() {
     <div className={styles.container}>
       <Head>
         <title>Lucid: 404</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>

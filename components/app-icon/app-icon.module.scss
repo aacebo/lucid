@@ -1,0 +1,29 @@
+@import '../../styles/border-radius';
+
+.container {
+  display: flex;
+
+  &.sm {
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: $luc-border-radius-sm;
+    }
+  }
+
+  &.md {
+    img {
+      height: 80px;
+      width: 80px;
+      border-radius: $luc-border-radius-md;
+    }
+  }
+
+  &.lg {
+    img {
+      height: 100px;
+      width: 100px;
+      border-radius: $luc-border-radius-md;
+    }
+  }
+}
