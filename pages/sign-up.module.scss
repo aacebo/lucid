@@ -1,5 +1,10 @@
 .container {
+  min-height: 100vh;
   display: flex;
-  flex: 1;
-  color: blue;
+  flex-direction: column;
+  background-image: linear-gradient(to top, transparent, 90%, #000),
+                    linear-gradient(to bottom, transparent, 75%, #000),
+                    url('/splash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
