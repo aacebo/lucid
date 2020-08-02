@@ -1,37 +1,26 @@
+import { Fragment, useEffect } from 'react';
 import { AppProps } from 'next/app';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import { ThemeProvider, CssBaseline } from '@material-ui/core';
 
 import '../styles/globals.scss';
+import THEME from './constants/theme.constant';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#1abc9c',
-      light: '#62efcd',
-      dark: '#008b6e',
-      contrastText: '#fff',
-    },
-    error: {
-      main: '#f44336',
-      light: '#ff7961',
-      dark: '#ba000d',
-      contrastText: '#fff',
-    },
-    warning: {
-      main: '#fb8c00',
-      light: '#ffbd45',
-      dark: '#c25e00',
-      contrastText: '#000',
-    },
-  },
-});
+export default function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
 
-function MyApp({ Component, pageProps }: AppProps) {
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Fragment>
+      <ThemeProvider theme={THEME}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Fragment>
   );
 }
-
-export default MyApp;
