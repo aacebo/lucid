@@ -17,5 +17,13 @@
     color: var(--text-light);
     width: 50%;
     max-width: 500px;
+
+    .form-control {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
   }
 }
