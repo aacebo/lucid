@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-
 import { Button, Card, CardContent, CardMedia } from '@material-ui/core';
 import { BuildOutlined, ShareOutlined, VisibilityOutlined, DoubleArrow } from '@material-ui/icons';
 
@@ -51,22 +50,22 @@ export default function Index() {
       </header>
 
       <main className={styles.main}>
-        <Card className={styles['main-card']} variant="outlined">
-          <CardMedia color="primary" className={styles['icon-fab']} component={BuildOutlined}></CardMedia>
+        <Card className={styles.card} variant="outlined">
+          <CardMedia color="primary" className={styles.icon} component={BuildOutlined}></CardMedia>
           <CardContent>
             Build and save in one location, pain free.
           </CardContent>
         </Card>
 
-        <Card className={styles['main-card']} variant="outlined">
-          <CardMedia color="primary" className={styles['icon-fab']} component={ShareOutlined}></CardMedia>
+        <Card className={styles.card} variant="outlined">
+          <CardMedia color="primary" className={styles.icon} component={ShareOutlined}></CardMedia>
           <CardContent>
             Share easily with anyone.
           </CardContent>
         </Card>
 
-        <Card className={styles['main-card']} variant="outlined">
-          <CardMedia color="primary" className={styles['icon-fab']} component={VisibilityOutlined}></CardMedia>
+        <Card className={styles.card} variant="outlined">
+          <CardMedia color="primary" className={styles.icon} component={VisibilityOutlined}></CardMedia>
           <CardContent>
             Visualize your professional timeline.
           </CardContent>
