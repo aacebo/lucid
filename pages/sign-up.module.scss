@@ -17,28 +17,5 @@
     color: #fff;
     width: 50%;
     max-width: 500px;
-
-    .group {
-      display: flex;
-
-      &:not(:last-child) {
-        margin-bottom: 5px;
-      }
-
-      .control {
-        &:not(:last-child) {
-          margin-right: 5px;
-          margin-bottom: 0px;
-        }
-      }
-    }
-
-    .control {
-      display: flex;
-
-      &:not(:last-child) {
-        margin-bottom: 5px;
-      }
-    }
   }
 }
