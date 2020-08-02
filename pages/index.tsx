@@ -44,7 +44,7 @@ export default function Index() {
               size="large"
             >
               Get Started &nbsp;
-              <DoubleArrow></DoubleArrow>
+              <DoubleArrow />
             </Button>
           </Link>
         </div>

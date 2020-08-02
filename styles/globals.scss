@@ -1,26 +1,9 @@
-@import '../themes/light.theme';
-@import '../themes/dark.theme';
-
-@import './theming';
-
 html, body {
   padding: 0;
   margin: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  color: var(--text);
-  background-color: var(--bg-light);
-}
-
-body {
-  &.luc-light {
-    @include luc-theme($luc-light-theme);
-  }
-
-  &.luc-dark {
-    @include luc-theme($luc-dark-theme);
-  }
 }
 
 #__next {

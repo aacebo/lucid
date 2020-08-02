@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={THEME.palette.primary.main} />
         </Head>
 
-        <body className="luc-light">
+        <body>
           <Main />
           <NextScript />
         </body>
