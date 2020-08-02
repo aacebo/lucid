@@ -1,4 +1,4 @@
-import { Validator } from './validator.interface';
+import { Validator } from '../validator.interface';
 
 const required: Validator = (v, prop, errors) => {
   const err = { ...errors };

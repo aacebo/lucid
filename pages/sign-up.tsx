@@ -6,9 +6,9 @@ import Button from '@material-ui/core/Button';
 import { Formik, FormikHelpers } from 'formik';
 
 import theme from '../utils/theme/theme.util';
-
-import ICreateUser from './models/user/create-user.interface';
-import required from './validators/required.validator';
+import ICreateUser from '../dtos/user/create-user.interface';
+import required from '../validators/required/required.validator';
+import email from '../validators/email/email.validator';
 
 import styles from './sign-up.module.scss';
 import formStyles from '../styles/form.module.scss';
@@ -20,6 +20,7 @@ export default function SignUp() {
     let errors = { };
 
     errors = required(v, 'email', errors);
+    errors = email(v, 'email', errors);
     errors = required(v, 'password', errors);
     errors = required(v, 'firstName', errors);
     errors = required(v, 'lastName', errors);
