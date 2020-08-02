@@ -2,7 +2,9 @@ import { Children } from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
-import THEME from './constants/theme.constant';
+import theme from '../utils/theme/theme.util';
+
+const THEME = theme();
 
 export default class MyDocument extends Document {
   render() {
