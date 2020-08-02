@@ -1,6 +1,10 @@
 import { GetStaticProps } from 'next';
-import { Container, Card, CardContent, CardHeader, CardActions, TextField } from '@material-ui/core';
+import Link from 'next/link';
+import Head from 'next/head';
+
+import { Card, CardContent, CardHeader, CardActions, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+
 import { Formik, FormikHelpers } from 'formik';
 
 import ICreateUser from './models/user/create-user.interface';
@@ -23,10 +27,13 @@ export default function SignUp() {
   };
 
   return (
-    <Container className={styles.container}>
+    <div className={styles.container}>
+      <Head>
+        <title>Lucid: Sign Up</title>
+      </Head>
+
       <Formik
         initialValues={{ }}
-        isInitialValid={false}
         validate={validate}
         onSubmit={submit}
       >
@@ -68,13 +75,20 @@ export default function SignUp() {
                   >
                     Submit
                   </Button>
+
+                  <Link href="/">
+                    <Button
+                    >
+                      Back
+                    </Button>
+                  </Link>
                 </CardActions>
               </Card>
             </form>
           )
         }
       </Formik>
-    </Container>
+    </div>
   );
 }
 
