@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Lucid: 404</title>
+        <title>Lucid: Not Found</title>
       </Head>
 
       <main className={styles.main}>

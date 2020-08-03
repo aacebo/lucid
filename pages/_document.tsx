@@ -52,10 +52,11 @@ MyDocument.getInitialProps = async (ctx) => {
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 
-  ctx.renderPage = () =>
-    originalRenderPage({
+  ctx.renderPage = () => {
+    return originalRenderPage({
       enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
+  }
 
   const initialProps = await Document.getInitialProps(ctx);
 

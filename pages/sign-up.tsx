@@ -151,7 +151,7 @@ export default function SignUp() {
                       />
                       {
                         fp.errors.password && fp.touched.password &&
-                        <FormHelperText error={true}>
+                        <FormHelperText error>
                           {fp.errors.password}
                         </FormHelperText>
                       }
