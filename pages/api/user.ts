@@ -3,6 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import ICreateUser from '../../dtos/user/create-user.interface';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  res.statusCode = 201;
+  res.statusCode = 200;
   res.json(req.body as ICreateUser);
 }
