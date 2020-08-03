@@ -2,9 +2,24 @@ import { useState } from 'react';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
-import { Card, CardContent, CardHeader, CardActions, TextField, ThemeProvider, CircularProgress } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
 import { Formik } from 'formik';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardActions,
+  TextField,
+  ThemeProvider,
+  CircularProgress,
+  FormControl,
+  InputLabel,
+  FormHelperText,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+  Button,
+} from '@material-ui/core';
 
 import theme from '../utils/theme/theme.util';
 import ICreateUser from '../dtos/user/create-user.interface';
@@ -31,6 +46,7 @@ function validate(v: Partial<ICreateUser>) {
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const submit = async (v: ICreateUser) => {
     setLoading(true);
@@ -108,18 +124,38 @@ export default function SignUp() {
                       onBlur={fp.handleBlur}
                     ></TextField>
 
-                    <TextField
-                      name="password"
-                      label="Password"
-                      variant="outlined"
-                      type="password"
-                      className={formStyles.control}
-                      value={fp.values.password || ''}
-                      error={!!fp.errors.password && fp.touched.password}
-                      helperText={fp.touched.password ? fp.errors.password : undefined}
-                      onChange={fp.handleChange}
-                      onBlur={fp.handleBlur}
-                    ></TextField>
+                    <FormControl variant="outlined" className={formStyles.control}>
+                      <InputLabel htmlFor="password" error={fp.errors.password && fp.touched.password}>
+                        Password
+                      </InputLabel>
+                      <OutlinedInput
+                        id="password"
+                        name="password"
+                        type={showPassword ? 'text' : 'password'}
+                        value={fp.values.password || ''}
+                        error={fp.errors.password && fp.touched.password}
+                        labelWidth={70}
+                        onChange={fp.handleChange}
+                        onBlur={fp.handleBlur}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              edge="end"
+                              onClick={() => setShowPassword(!showPassword)}
+                            >
+                              {showPassword ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                      />
+                      {
+                        fp.errors.password && fp.touched.password &&
+                        <FormHelperText error={true}>
+                          {fp.errors.password}
+                        </FormHelperText>
+                      }
+                    </FormControl>
                   </CardContent>
 
                   <CardActions>
