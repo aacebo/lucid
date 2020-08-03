@@ -10,6 +10,7 @@ import theme from '../utils/theme/theme.util';
 import ICreateUser from '../dtos/user/create-user.interface';
 import required from '../validators/required/required.validator';
 import email from '../validators/email/email.validator';
+import password from '../validators/password/password.validator';
 import userService from '../services/user/user.service';
 
 import styles from './sign-up.module.scss';
@@ -20,9 +21,8 @@ const THEME = theme('dark');
 function validate(v: Partial<ICreateUser>) {
   let errors = { };
 
-  errors = required(v, 'email', errors);
-  errors = email(v, 'email', errors);
-  errors = required(v, 'password', errors);
+  errors = email(v, 'email', required(v, 'email', errors));
+  errors = password(v, 'password', required(v, 'password', errors));
   errors = required(v, 'firstName', errors);
   errors = required(v, 'lastName', errors);
 
