@@ -1,35 +1,47 @@
+import { useState } from 'react';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
-import { Card, CardContent, CardHeader, CardActions, TextField, ThemeProvider } from '@material-ui/core';
+import { Card, CardContent, CardHeader, CardActions, TextField, ThemeProvider, CircularProgress } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import { Formik, FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 
 import theme from '../utils/theme/theme.util';
 import ICreateUser from '../dtos/user/create-user.interface';
 import required from '../validators/required/required.validator';
 import email from '../validators/email/email.validator';
+import userService from '../services/user/user.service';
 
 import styles from './sign-up.module.scss';
 import formStyles from '../styles/form.module.scss';
 
 const THEME = theme('dark');
 
+function validate(v: Partial<ICreateUser>) {
+  let errors = { };
+
+  errors = required(v, 'email', errors);
+  errors = email(v, 'email', errors);
+  errors = required(v, 'password', errors);
+  errors = required(v, 'firstName', errors);
+  errors = required(v, 'lastName', errors);
+
+  return errors;
+};
+
 export default function SignUp() {
-  const validate = (v: Partial<ICreateUser>) => {
-    let errors = { };
+  const [loading, setLoading] = useState(false);
 
-    errors = required(v, 'email', errors);
-    errors = email(v, 'email', errors);
-    errors = required(v, 'password', errors);
-    errors = required(v, 'firstName', errors);
-    errors = required(v, 'lastName', errors);
+  const submit = async (v: ICreateUser) => {
+    setLoading(true);
 
-    return errors;
-  };
+    const res = await userService.create(v);
 
-  const submit = async (v: Partial<ICreateUser>, fh: FormikHelpers<Partial<ICreateUser>>) => {
-    console.log(v);
+    if (res.status === 201) {
+    } else {
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -114,13 +126,16 @@ export default function SignUp() {
                       variant="contained"
                       type="submit"
                       color="primary"
-                      disabled={fp.isSubmitting || !fp.isValid || !fp.dirty}
+                      disabled={fp.isSubmitting || !fp.isValid || !fp.dirty || loading}
                     >
                       Submit
+                      {loading && <CircularProgress size={20} className={styles.progress} />}
                     </Button>
 
                     <Link href="/">
-                      <Button>Back</Button>
+                      <Button>
+                        Back
+                      </Button>
                     </Link>
                   </CardActions>
                 </Card>
