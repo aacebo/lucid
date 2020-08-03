@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import ICreateUser from '../../dtos/user/create-user.interface';
+
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.query);
   res.statusCode = 201;
-  res.json({ name: 'John Doe' });
+  res.json(req.body as ICreateUser);
 }

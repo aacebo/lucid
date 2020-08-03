@@ -36,6 +36,7 @@ export default function SignUp() {
     setLoading(true);
 
     const res = await userService.create(v);
+    console.log(res.data);
 
     if (res.status === 201) {
     } else {
