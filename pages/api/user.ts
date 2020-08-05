@@ -1,8 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import ICreateUser from '../../dtos/user/create-user.interface';
+import createUser from '../../endpoints/user/create-user.endpoint';
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  res.statusCode = 201;
-  res.json(req.body as ICreateUser);
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method === 'POST') {
+    await createUser(req, res);
+  } else {
+    res.status(404).json({ message: 'endpoint not found' });
+  }
 }
