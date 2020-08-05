@@ -1,5 +1,6 @@
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { AppProps } from 'next/app';
+import { Provider } from 'next-auth/client';
 import { ThemeProvider, CssBaseline } from '@material-ui/core';
 
 import '../styles/globals.scss';
@@ -18,11 +19,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Fragment>
+    <Provider session={pageProps.session}>
       <ThemeProvider theme={THEME}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </Fragment>
+    </Provider>
   );
 }

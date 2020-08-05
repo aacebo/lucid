@@ -27,6 +27,7 @@ import required from '../validators/required/required.validator';
 import email from '../validators/email/email.validator';
 import password from '../validators/password/password.validator';
 import userService from '../services/user/user.service';
+import GoogleButton from '../components/google-button/google-button';
 
 import styles from './sign-up.module.scss';
 import formStyles from '../styles/form.module.scss';
@@ -174,6 +175,8 @@ export default function SignUp() {
                         Back
                       </Button>
                     </Link>
+
+                    <GoogleButton />
                   </CardActions>
                 </Card>
               </form>
