@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
 import Head from 'next/head';
 import { Formik } from 'formik';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
@@ -22,7 +21,7 @@ import {
 } from '@material-ui/core';
 
 import theme from '../utils/theme/theme.util';
-import ICreateUser from '../dtos/user/create-user.interface';
+import CreateUser from '../endpoints/user/create/create-user.dto';
 import required from '../validators/required/required.validator';
 import email from '../validators/email/email.validator';
 import password from '../validators/password/password.validator';
@@ -34,7 +33,7 @@ import formStyles from '../styles/form.module.scss';
 
 const THEME = theme('dark');
 
-function validate(v: Partial<ICreateUser>) {
+function validate(v: Partial<CreateUser>) {
   let errors = { };
 
   errors = email(v, 'email', required(v, 'email', errors));
@@ -49,7 +48,7 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const submit = async (v: ICreateUser) => {
+  const submit = async (v: CreateUser) => {
     setLoading(true);
 
     const res = await userService.create(v);
@@ -82,7 +81,7 @@ export default function SignUp() {
                 onSubmit={fp.handleSubmit}
               >
                 <Card variant="outlined" className={styles.card}>
-                  <CardHeader title="Sign Up"></CardHeader>
+                  <CardHeader title="Sign Up" />
 
                   <CardContent className={formStyles.form}>
                     <div className={formStyles.group}>
@@ -97,7 +96,7 @@ export default function SignUp() {
                         helperText={fp.touched.firstName ? fp.errors.firstName : undefined}
                         onChange={fp.handleChange}
                         onBlur={fp.handleBlur}
-                      ></TextField>
+                      />
 
                       <TextField
                         name="lastName"
@@ -110,7 +109,7 @@ export default function SignUp() {
                         helperText={fp.touched.lastName ? fp.errors.lastName : undefined}
                         onChange={fp.handleChange}
                         onBlur={fp.handleBlur}
-                      ></TextField>
+                      />
                     </div>
 
                     <TextField
@@ -123,7 +122,7 @@ export default function SignUp() {
                       helperText={fp.touched.email ? fp.errors.email : undefined}
                       onChange={fp.handleChange}
                       onBlur={fp.handleBlur}
-                    ></TextField>
+                    />
 
                     <FormControl variant="outlined" className={formStyles.control}>
                       <InputLabel htmlFor="password" error={fp.errors.password && fp.touched.password}>
@@ -169,12 +168,6 @@ export default function SignUp() {
                       Submit
                       {loading && <CircularProgress size={20} className={styles.progress} />}
                     </Button>
-
-                    <Link href="/">
-                      <Button>
-                        Back
-                      </Button>
-                    </Link>
 
                     <GoogleButton />
                   </CardActions>

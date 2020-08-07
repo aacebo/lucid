@@ -20,7 +20,7 @@ export default function Index() {
           <div>
             <AppIcon size="sm" />
           </div>
-          <div className={styles.spacer}></div>
+          <div className={styles.spacer} />
           <div>
             <Link href="/sign-up">
               <Button color="primary">Sign Up</Button>
@@ -51,21 +51,21 @@ export default function Index() {
 
       <main className={styles.main}>
         <Card className={styles.card} variant="outlined">
-          <CardMedia color="primary" className={styles.icon} component={BuildOutlined}></CardMedia>
+          <CardMedia color="primary" className={styles.icon} component={BuildOutlined} />
           <CardContent>
             Build and save in one location, pain free.
           </CardContent>
         </Card>
 
         <Card className={styles.card} variant="outlined">
-          <CardMedia color="primary" className={styles.icon} component={ShareOutlined}></CardMedia>
+          <CardMedia color="primary" className={styles.icon} component={ShareOutlined} />
           <CardContent>
             Share easily with anyone.
           </CardContent>
         </Card>
 
         <Card className={styles.card} variant="outlined">
-          <CardMedia color="primary" className={styles.icon} component={VisibilityOutlined}></CardMedia>
+          <CardMedia color="primary" className={styles.icon} component={VisibilityOutlined} />
           <CardContent>
             Visualize your professional timeline.
           </CardContent>

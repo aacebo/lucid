@@ -9,16 +9,21 @@ import styles from './google-button.module.scss';
 export default function GoogleButton() {
   const [ session, loading ] = useSession();
 
+  const click = () => {
+    if (session) {
+      signout('google');
+    } else {
+      signin('google');
+    }
+  };
+
   return (
-    <div className={styles.container}>
-      {!session && <>
-        Not signed in <br/>
-        <button onClick={signin}>Sign in</button>
-      </>}
-      {session && <>
-        Signed in as {session.user.email} <br/>
-        <button onClick={signout}>Sign out</button>
-      </>}
-    </div>
+    <button
+      type="button"
+      className={styles.container}
+      onClick={click}
+    >
+      { session ? 'Sign Out' : 'Sign In' }
+    </button>    
   );
 }

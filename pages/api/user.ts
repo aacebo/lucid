@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import createUser from '../../endpoints/user/create-user.endpoint';
+import createUser from '../../endpoints/user/create/create-user.endpoint';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {

@@ -3,6 +3,7 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
  
 const options = {
+  secret: process.env.JWT_SECRET,
   providers: [
     Providers.Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
