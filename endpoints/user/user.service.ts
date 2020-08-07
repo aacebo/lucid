@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import ICreateUser from '../../dtos/user/create-user.interface';
+import CreateUser from './create/create-user.dto';
 
 class UserService {
-  create(user: ICreateUser) {
+  create(user: CreateUser) {
     return axios.post(`/api/user`, user);
   }
 }
