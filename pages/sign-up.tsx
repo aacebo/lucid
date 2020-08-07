@@ -22,10 +22,10 @@ import {
 
 import theme from '../utils/theme/theme.util';
 import CreateUser from '../endpoints/user/create/create-user.dto';
+import userService from '../endpoints/user/user.service';
 import required from '../validators/required/required.validator';
 import email from '../validators/email/email.validator';
 import password from '../validators/password/password.validator';
-import userService from '../services/user/user.service';
 import GoogleButton from '../components/google-button/google-button';
 
 import styles from './sign-up.module.scss';
