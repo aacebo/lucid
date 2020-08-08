@@ -1,4 +1,3 @@
-import { ComponentProps } from 'react';
 import {
   useSession,
   signin,
@@ -7,9 +6,10 @@ import {
 
 import GoogleLogo from '../../public/google.svg';
 
+import IGoogleButtonProps from './google-button-props.interface';
 import styles from './google-button.module.scss';
 
-export default function GoogleButton(_props: ComponentProps<'button'>) {
+export default function GoogleButton(props: IGoogleButtonProps) {
   const [ session, loading ] = useSession();
 
   const click = () => {
@@ -23,7 +23,7 @@ export default function GoogleButton(_props: ComponentProps<'button'>) {
   return (
     <button
       type="button"
-      className={styles.container}
+      className={`${styles.container} ${props.className}`}
       onClick={click}
     >
       <GoogleLogo className={styles.logo} />

@@ -19,6 +19,7 @@ import cvm from '../utils/class-validator-map/class-validator-map.util';
 import CreateUser from '../endpoints/user/create/create-user.dto';
 import userService from '../endpoints/user/user.service';
 import GoogleButton from '../components/google-button/google-button';
+import Divider from '../components/divider/divider';
 
 import styles from './sign-up.module.scss';
 import formStyles from '../styles/form.module.scss';
@@ -143,6 +144,7 @@ export default function SignUp() {
                 { loading && <CircularProgress size={20} className={styles.progress} /> }
               </Button>
 
+              <Divider className={styles.action}>Or</Divider>
               <GoogleButton className={styles.action} />
             </form>
           )

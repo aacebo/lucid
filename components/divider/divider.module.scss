@@ -1,0 +1,28 @@
+$divider-spacing: 30px;
+
+.container {
+  display: flex;
+
+  .left,
+  .right {
+    flex: 1;
+    border-top: 1px solid #d9dadc;
+  }
+
+  .left {
+    margin: auto 0 auto $divider-spacing;
+  }
+
+  .right {
+    margin: auto $divider-spacing auto 0;
+  }
+
+  .center {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 0 ($divider-spacing / 2);
+    text-transform: uppercase;
+    background-color: #fff;
+  }
+}

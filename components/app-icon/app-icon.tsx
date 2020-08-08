@@ -1,11 +1,13 @@
 import cn from 'classnames';
 
+import IAppIconProps from './app-icon-props.interface';
 import styles from './app-icon.module.scss';
 
-export default function AppIcon(props: { size?: 'sm' | 'md' | 'lg' }) {
+export default function AppIcon(props: IAppIconProps) {
   return (
     <div
       className={cn({
+        [props.className]: true,
         [styles.container]: true,
         [styles.sm]: props.size === 'sm',
         [styles.md]: props.size === 'md',
