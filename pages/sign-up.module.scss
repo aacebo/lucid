@@ -2,24 +2,21 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(to top, transparent, 90%, #000),
-                    linear-gradient(to bottom, transparent, 75%, #000),
-                    url('/splash.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 10px;
 
-  .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    width: 50%;
-    max-width: 500px;
+  form {
+    width: 80%;
+    flex: 1;
+    margin: 0 auto;
 
-    .progress {
-      margin-left: 10px;
+    .action {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      .progress {
+        margin-left: 10px;
+      }
     }
   }
 }

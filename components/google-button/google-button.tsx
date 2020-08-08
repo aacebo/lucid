@@ -1,12 +1,15 @@
+import { ComponentProps } from 'react';
 import {
   useSession,
   signin,
   signout,
 } from 'next-auth/client';
 
+import GoogleLogo from '../../public/google.svg';
+
 import styles from './google-button.module.scss';
 
-export default function GoogleButton() {
+export default function GoogleButton(_props: ComponentProps<'button'>) {
   const [ session, loading ] = useSession();
 
   const click = () => {
@@ -23,7 +26,10 @@ export default function GoogleButton() {
       className={styles.container}
       onClick={click}
     >
-      { session ? 'Sign Out' : 'Sign In' }
-    </button>    
+      <GoogleLogo className={styles.logo} />
+      <span className={styles.text}>
+        { session ? 'Sign out' : 'Sign in' } with Google
+      </span>
+    </button>  
   );
 }
