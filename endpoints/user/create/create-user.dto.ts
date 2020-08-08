@@ -11,8 +11,7 @@ export default class CreateUser {
   @MinLength(1, { message: 'required' })
   readonly email: string;
 
-  @Length(8, 25, { message: 'must be length 8-25' })
-  @Matches(/^(?=.*\d).$/, { message: 'must have at least 1 number' })
+  @Matches(/^(?=.*\d).{8,25}$/, { message: 'must have at least 1 number and be of length 8-25' })
   readonly password: string;
 
   constructor(user?: Partial<CreateUser>) {
