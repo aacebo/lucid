@@ -14,25 +14,14 @@ import {
   IconButton,
   Button,
 } from '@material-ui/core';
-import * as cv from 'class-validator';
 
+import cvm from '../utils/class-validator-map/class-validator-map.util';
 import CreateUser from '../endpoints/user/create/create-user.dto';
 import userService from '../endpoints/user/user.service';
 import GoogleButton from '../components/google-button/google-button';
 
 import styles from './sign-up.module.scss';
 import formStyles from '../styles/form.module.scss';
-
-async function validate(v: Partial<CreateUser>) {
-  let errors = { };
-  const errs = await cv.validate(new CreateUser(v));
-
-  for (const err of errs) {
-    errors[err.property] = Object.values(err.constraints)[0];
-  }
-
-  return errors;
-};
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false);
@@ -59,7 +48,7 @@ export default function SignUp() {
 
       <Formik
         initialValues={{ }}
-        validate={validate}
+        validate={(v: Partial<CreateUser>) => cvm(v, CreateUser)}
         onSubmit={submit}
       >
         {
