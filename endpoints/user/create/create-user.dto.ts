@@ -1,4 +1,4 @@
-import { IsEmail, Length, MinLength, Matches } from 'class-validator';
+import { IsEmail, MinLength, Matches } from 'class-validator';
 
 export default class CreateUser {
   @MinLength(1, { message: 'required' })
