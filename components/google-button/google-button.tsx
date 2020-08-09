@@ -4,9 +4,12 @@ import {
   signout,
 } from 'next-auth/client';
 
+import GoogleLogo from '../../public/google.svg';
+
+import IGoogleButtonProps from './google-button-props.interface';
 import styles from './google-button.module.scss';
 
-export default function GoogleButton() {
+export default function GoogleButton(props: IGoogleButtonProps) {
   const [ session, loading ] = useSession();
 
   const click = () => {
@@ -20,10 +23,13 @@ export default function GoogleButton() {
   return (
     <button
       type="button"
-      className={styles.container}
+      className={`${styles.container} ${props.className}`}
       onClick={click}
     >
-      { session ? 'Sign Out' : 'Sign In' }
-    </button>    
+      <GoogleLogo className={styles.logo} />
+      <span className={styles.text}>
+        { session ? 'Sign out' : 'Sign in' } with Google
+      </span>
+    </button>  
   );
 }

@@ -1,3 +1,27 @@
 .container {
   display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 16px;
+  border-radius: 3px;
+  background-color: #eee;
+  outline: none;
+  border: none;
+  color: grey;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #fff;
+  }
+
+  .logo {
+    height: 25px;
+  }
+
+  .text {
+    font-size: 0.875rem;
+    margin: auto 0 auto 10px;
+  }
 }
