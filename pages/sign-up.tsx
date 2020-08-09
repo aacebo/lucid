@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Formik } from 'formik';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
@@ -20,6 +21,7 @@ import CreateUser from '../endpoints/user/create/create-user.dto';
 import userService from '../endpoints/user/user.service';
 import GoogleButton from '../components/google-button/google-button';
 import Divider from '../components/divider/divider';
+import AppIcon from '../components/app-icon/app-icon';
 
 import styles from './sign-up.module.scss';
 import formStyles from '../styles/form.module.scss';
@@ -46,6 +48,10 @@ export default function SignUp() {
       <Head>
         <title>Lucid: Sign Up</title>
       </Head>
+
+      <header>
+        <AppIcon />
+      </header>
 
       <Formik
         initialValues={{ }}
@@ -132,6 +138,12 @@ export default function SignUp() {
                   </FormHelperText>
                 }
               </FormControl>
+
+              <Link href="/">
+                <Button className={styles.action}>
+                  Back
+                </Button>
+              </Link>
 
               <Button
                 variant="contained"
