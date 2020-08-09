@@ -24,6 +24,7 @@ export default function GoogleButton(props: IGoogleButtonProps) {
     <button
       type="button"
       className={`${styles.container} ${props.className}`}
+      disabled={loading}
       onClick={click}
     >
       <GoogleLogo className={styles.logo} />
