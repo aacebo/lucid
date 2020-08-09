@@ -11,6 +11,13 @@ const options = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }),
   ],
+  pages: {
+    signIn: '/sign-in',
+    signOut: '/sign-out',
+    error: '/error',
+    verifyRequest: '/verify-request',
+    newUser: '/sign-up',
+  },
 };
  
 export default (req: NextApiRequest, res: NextApiResponse) => {
