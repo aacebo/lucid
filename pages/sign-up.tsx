@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import { getSession } from 'next-auth/client';
 import { Formik } from 'formik';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
@@ -16,6 +17,7 @@ import {
   Button,
 } from '@material-ui/core';
 
+import notAuthOrRedirect from '../middleware/not-auth-or-redirect/not-auth-or-redirect.middleware';
 import cvm from '../utils/class-validator-map/class-validator-map.util';
 import CreateUser from '../endpoints/user/create/create-user.dto';
 import userService from '../endpoints/user/user.service';
@@ -23,15 +25,15 @@ import GoogleButton from '../components/google-button/google-button';
 import Divider from '../components/divider/divider';
 import AppIcon from '../components/app-icon/app-icon';
 
-import styles from './sign-up.module.scss';
 import formStyles from '../styles/form.module.scss';
+import styles from './sign-up.module.scss';
 
 export default function SignUp() {
-  const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [ submitting, setSubmitting ] = useState(false);
+  const [ showPassword, setShowPassword ] = useState(false);
 
   const submit = async (v: CreateUser) => {
-    setLoading(true);
+    setSubmitting(true);
 
     const res = await userService.create(v);
     console.log(res.data);
@@ -40,7 +42,7 @@ export default function SignUp() {
     } else {
     }
 
-    setLoading(false);
+    setSubmitting(false);
   };
 
   return (
@@ -150,10 +152,10 @@ export default function SignUp() {
                 type="submit"
                 color="primary"
                 className={styles.action}
-                disabled={fp.isSubmitting || !fp.isValid || !fp.dirty || loading}
+                disabled={fp.isSubmitting || !fp.isValid || !fp.dirty || submitting}
               >
                 Submit
-                { loading && <CircularProgress size={20} className={styles.progress} /> }
+                { submitting && <CircularProgress size={20} className={styles.progress} /> }
               </Button>
 
               <Divider className={styles.action}>Or</Divider>
@@ -166,8 +168,8 @@ export default function SignUp() {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps = notAuthOrRedirect(async () => {
   return {
     props: { },
   };
-}
+}, '/user');
