@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { signIn } from 'next-auth/client';
 import { Formik } from 'formik';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
@@ -18,7 +19,6 @@ import {
 import notAuthOrRedirect from '../middleware/not-auth-or-redirect/not-auth-or-redirect.middleware';
 import cvm from '../utils/class-validator-map/class-validator-map.util';
 import CreateUser from '../endpoints/user/create/create-user.dto';
-import userService from '../endpoints/user/user.service';
 import GoogleButton from '../components/google-button/google-button';
 import Divider from '../components/divider/divider';
 import AppIcon from '../components/app-icon/app-icon';
@@ -33,12 +33,7 @@ export default function SignUp() {
   const submit = async (v: CreateUser) => {
     setSubmitting(true);
 
-    const res = await userService.create(v);
-    console.log(res.data);
-
-    if (res.status === 201) {
-    } else {
-    }
+    await signIn('local', v);
 
     setSubmitting(false);
   };
