@@ -1,4 +1,4 @@
-export default interface IUserAccount {
+export default interface IGoogleUserAccount {
   readonly provider: 'google';
   readonly type: 'oauth';
   readonly id: string;

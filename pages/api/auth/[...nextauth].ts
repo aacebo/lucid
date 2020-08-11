@@ -3,8 +3,8 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
 import CreateUser from '../../../endpoints/user/create/create-user.dto';
-import IUser from '../../../endpoints/user/user.interface';
-import IUserAccount from '../../../endpoints/user/user-account.interface';
+import IGoogleUser from '../../../endpoints/user/google-user.interface';
+import IGoogleUserAccount from '../../../endpoints/user/google-user-account.interface';
  
 const options = {
   secret: process.env.JWT_SECRET,
@@ -36,7 +36,7 @@ const options = {
     }),
   ],
   callbacks: {
-    signIn: async (user: IUser, account: IUserAccount) => {
+    signIn: async (user: IGoogleUser, account: IGoogleUserAccount) => {
       console.log(user);
       console.log(account);
       return Promise.resolve(true);
