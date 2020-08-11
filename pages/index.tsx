@@ -1,10 +1,10 @@
-import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Button, Card, CardContent, CardMedia } from '@material-ui/core';
 import { BuildOutlined, ShareOutlined, VisibilityOutlined, DoubleArrow } from '@material-ui/icons';
 
 import AppIcon from '../components/app-icon/app-icon';
+import notAuthOrRedirect from '../middleware/not-auth-or-redirect/not-auth-or-redirect.middleware';
 
 import styles from './index.module.scss';
 
@@ -78,8 +78,8 @@ export default function Index() {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps = notAuthOrRedirect(async () => {
   return {
     props: { },
   };
-}
+}, '/user');
