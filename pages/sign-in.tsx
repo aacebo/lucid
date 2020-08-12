@@ -132,6 +132,17 @@ export default function SignIn() {
 
               <Divider className={styles.action}>Or</Divider>
               <GoogleButton className={styles.action} />
+              <Divider className={styles.action}>Don't have an account?</Divider>
+              
+              <Link href="/sign-up">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  className={styles.action}
+                >
+                  Sign Up For Lucid
+                </Button>
+              </Link>
             </form>
           )
         }
