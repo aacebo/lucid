@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { signIn } from 'next-auth/client';
 import { Formik } from 'formik';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
@@ -34,8 +35,11 @@ export default function SignUp() {
     setSubmitting(true);
 
     try {
-      const res = await userService.create(v);
-      console.log(res);
+      await userService.create(v);
+      signIn('local', {
+        email: v.email,
+        password: v.password,
+      });
     } catch (err) {
       console.log(err);
     }
