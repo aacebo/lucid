@@ -1,10 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+import mongoose from 'mongoose';
 
 import CreateUser from '../../../endpoints/user/create/create-user.dto';
 import IGoogleUser from '../../../endpoints/user/google-user.interface';
 import IGoogleUserAccount from '../../../endpoints/user/google-user-account.interface';
+import IGoogleUserProfile from '../../../endpoints/user/google-user-profile.interface';
+import User from '../../../endpoints/user/user.entity';
  
 const options = {
   secret: process.env.JWT_SECRET,
@@ -36,9 +39,21 @@ const options = {
     }),
   ],
   callbacks: {
-    signIn: async (user: IGoogleUser, account: IGoogleUserAccount) => {
-      console.log(user);
-      console.log(account);
+    signIn: async (_guser: IGoogleUser, gaccount: IGoogleUserAccount, profile: IGoogleUserProfile) => {
+      try {
+        const user = await User.findOne({ email: profile.email });
+  
+        await User.updateOne({ _id: user?._id || mongoose.Types.ObjectId() }, {
+          email: profile.email,
+          firstName: profile.given_name,
+          lastName: profile.family_name,
+          image: profile.picture,
+          provider: gaccount.provider as any,
+        }, { upsert: true });
+      } catch (err) {
+        console.error(err);
+      }
+
       return Promise.resolve(true);
     },
   },

@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-import { IUserDocument } from '../endpoints/user/user.entity';
+import { IUser } from '../endpoints/user/user.entity';
 
-const DEV_USER: Partial<IUserDocument> = {
+const DEV_USER: Partial<IUser> = {
   _id: mongoose.Types.ObjectId.createFromHexString('000000013efe40642a17a496'),
   firstName: 'dev',
   lastName: 'user',
