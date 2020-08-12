@@ -3,7 +3,7 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import mongoose from 'mongoose';
 
-import CreateUser from '../../../endpoints/user/create/create-user.dto';
+import LoginUser from '../../../endpoints/user/login/login-user.dto';
 import IGoogleUser from '../../../endpoints/user/google-user.interface';
 import IGoogleUserAccount from '../../../endpoints/user/google-user-account.interface';
 import IGoogleUserProfile from '../../../endpoints/user/google-user-profile.interface';
@@ -20,7 +20,7 @@ const options = {
     }),
     Providers.Credentials({
       id: 'local',
-      authorize: async (creds: CreateUser) => {
+      authorize: async (creds: LoginUser) => {
         let user: IUserDocument;
 
         try {

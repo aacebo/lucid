@@ -26,7 +26,7 @@ export default function Index() {
               <Button color="primary">Sign Up</Button>
             </Link>
 
-            <Link href="/login">
+            <Link href="/sign-in">
               <Button color="primary">Login</Button>
             </Link>
           </div>
