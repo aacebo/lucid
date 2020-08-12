@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 import CreateUser from './create/create-user.dto';
+import { IUser } from './user.entity';
 
 class UserService {
   create(user: CreateUser) {
-    return axios.post(`/api/user`, user);
+    return axios.post<IUser>(`/api/user`, user);
   }
 }
 

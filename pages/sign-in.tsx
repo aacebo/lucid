@@ -18,8 +18,7 @@ import {
 
 import notAuthOrRedirect from '../middleware/not-auth-or-redirect/not-auth-or-redirect.middleware';
 import cvm from '../utils/class-validator-map/class-validator-map.util';
-import CreateUser from '../endpoints/user/create/create-user.dto';
-import userService from '../endpoints/user/user.service';
+import LoginUser from '../endpoints/user/login/login-user.dto';
 import GoogleButton from '../components/google-button/google-button';
 import Divider from '../components/divider/divider';
 import AppIcon from '../components/app-icon/app-icon';
@@ -27,15 +26,14 @@ import AppIcon from '../components/app-icon/app-icon';
 import formStyles from '../styles/form.module.scss';
 import styles from './sign-up.module.scss';
 
-export default function SignUp() {
+export default function SignIn() {
   const [ submitting, setSubmitting ] = useState(false);
   const [ showPassword, setShowPassword ] = useState(false);
 
-  const submit = async (v: CreateUser) => {
+  const submit = async (v: LoginUser) => {
     setSubmitting(true);
 
     try {
-      await userService.create(v);
       signIn('local', {
         email: v.email,
         password: v.password,
@@ -50,7 +48,7 @@ export default function SignUp() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Lucid: Sign Up</title>
+        <title>Lucid: Sign In</title>
       </Head>
 
       <header>
@@ -59,7 +57,7 @@ export default function SignUp() {
 
       <Formik
         initialValues={{ }}
-        validate={(v: Partial<CreateUser>) => cvm(v, CreateUser)}
+        validate={(v: Partial<LoginUser>) => cvm(v, LoginUser)}
         onSubmit={submit}
       >
         {
@@ -70,34 +68,6 @@ export default function SignUp() {
               className={formStyles.form}
               onSubmit={fp.handleSubmit}
             >
-              <div className={formStyles.group}>
-                <TextField
-                  name="firstName"
-                  label="First Name"
-                  variant="outlined"
-                  className={formStyles.control}
-                  style={{ flex: '1 1 50%' }}
-                  value={fp.values.firstName || ''}
-                  error={!!fp.errors.firstName && fp.touched.firstName}
-                  helperText={fp.touched.firstName ? fp.errors.firstName : undefined}
-                  onChange={fp.handleChange}
-                  onBlur={fp.handleBlur}
-                />
-
-                <TextField
-                  name="lastName"
-                  label="Last Name"
-                  variant="outlined"
-                  className={formStyles.control}
-                  style={{ flex: '1 1 50%' }}
-                  value={fp.values.lastName || ''}
-                  error={!!fp.errors.lastName && fp.touched.lastName}
-                  helperText={fp.touched.lastName ? fp.errors.lastName : undefined}
-                  onChange={fp.handleChange}
-                  onBlur={fp.handleBlur}
-                />
-              </div>
-
               <TextField
                 name="email"
                 label="Email"
@@ -162,15 +132,15 @@ export default function SignUp() {
 
               <Divider className={styles.action}>Or</Divider>
               <GoogleButton className={styles.action} />
-              <Divider className={styles.action}>Already have an account?</Divider>
-
-              <Link href="/sign-in">
+              <Divider className={styles.action}>Don't have an account?</Divider>
+              
+              <Link href="/sign-up">
                 <Button
                   variant="outlined"
                   color="secondary"
                   className={styles.action}
                 >
-                  Sign In with Lucid
+                  Sign Up For Lucid
                 </Button>
               </Link>
             </form>

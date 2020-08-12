@@ -16,7 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-  }, []);
+  });
 
   return (
     <Provider session={pageProps.session}>

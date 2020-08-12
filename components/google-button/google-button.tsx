@@ -1,7 +1,7 @@
 import {
   useSession,
-  signin,
-  signout,
+  signIn,
+  signOut,
 } from 'next-auth/client';
 
 import GoogleLogo from '../../public/google.svg';
@@ -14,9 +14,9 @@ export default function GoogleButton(props: IGoogleButtonProps) {
 
   const click = () => {
     if (session) {
-      signout('google');
+      signOut('google');
     } else {
-      signin('google');
+      signIn('google');
     }
   };
 
@@ -24,6 +24,7 @@ export default function GoogleButton(props: IGoogleButtonProps) {
     <button
       type="button"
       className={`${styles.container} ${props.className}`}
+      disabled={loading}
       onClick={click}
     >
       <GoogleLogo className={styles.logo} />

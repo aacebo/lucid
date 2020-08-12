@@ -1,0 +1,31 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  header {
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  form {
+    width: 80%;
+    max-width: 500px;
+    flex: 1;
+    margin: 0 auto;
+
+    .action {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      .progress {
+        margin-left: 10px;
+      }
+    }
+  }
+}
