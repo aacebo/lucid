@@ -2,7 +2,11 @@ import chalk from 'chalk';
 
 export default class Logger {
   static log(v: string) {
-    console.log(`${chalk.cyan('info')}  - ${v}`);
+    console.log(`${chalk.cyan('log')}   - ${v}`);
+  }
+
+  static info(v: string) {
+    console.info(`${chalk.cyan('info')}  - ${v}`);
   }
 
   static warn(v: string) {
