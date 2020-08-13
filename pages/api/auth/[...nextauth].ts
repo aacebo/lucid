@@ -9,7 +9,7 @@ import IGoogleUserAccount from '../../../endpoints/user/google-user-account.inte
 import IGoogleUserProfile from '../../../endpoints/user/google-user-profile.interface';
 import User, { IUserDocument } from '../../../endpoints/user/user.entity';
 import Logger from '../../../helpers/logger/logger.helper';
- 
+
 const options = {
   secret: process.env.JWT_SECRET,
   jwt: { secret: process.env.JWT_SECRET },

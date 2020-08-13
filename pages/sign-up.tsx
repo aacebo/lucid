@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { signIn } from 'next-auth/client';
+import { signIn, useSession } from 'next-auth/client';
 import { Formik } from 'formik';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
@@ -30,6 +30,7 @@ import styles from './sign-up.module.scss';
 export default function SignUp() {
   const [ submitting, setSubmitting ] = useState(false);
   const [ showPassword, setShowPassword ] = useState(false);
+  const [ session, sessionLoading ] = useSession();
 
   const submit = async (v: CreateUser) => {
     setSubmitting(true);
@@ -161,7 +162,7 @@ export default function SignUp() {
               </Button>
 
               <Divider className={styles.action}>Or</Divider>
-              <SSOButton provider="google" className={styles.action} />
+              <SSOButton provider="google" className={styles.action} session={session} loading={sessionLoading} />
               <Divider className={styles.action}>Already have an account?</Divider>
 
               <Link href="/sign-in">

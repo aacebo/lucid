@@ -1,8 +1,4 @@
-import {
-  useSession,
-  signIn,
-  signOut,
-} from 'next-auth/client';
+import { signIn, signOut } from 'next-auth/client';
 import cn from 'classnames';
 
 import GoogleLogo from '../../public/google.svg';
@@ -17,12 +13,11 @@ const ssoResources = {
   },
 };
 
-export default function SSOButton(props: ISSOButtonProps) {
-  const [ session, loading ] = useSession();
+export default function SSOButton(props: ISSOButtonProps = { }) {
   const resource = ssoResources[props.provider];
 
   const click = () => {
-    if (session) {
+    if (props.session) {
       signOut(props.provider);
     } else {
       signIn(props.provider);
@@ -37,12 +32,12 @@ export default function SSOButton(props: ISSOButtonProps) {
         [props.className]: !!props.className,
         [resource?.className]: !!resource,
       })}
-      disabled={loading}
+      disabled={props.loading}
       onClick={click}
     >
       { resource && <resource.Icon className={styles.logo} /> }
       <span className={styles.text}>
-        { session ? 'Sign out' : 'Sign in' }
+        { props.session ? 'Sign out' : 'Sign in' }
         { props.provider && ` with ${ props.provider }` }
       </span>
     </button>  
