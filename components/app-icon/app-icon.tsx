@@ -9,8 +9,8 @@ export default function AppIcon(props: IAppIconProps) {
   return (
     <div
       className={cn({
-        [props.className || '']: true,
         [styles.container]: true,
+        [props.className]: !!props.className,
         [styles.sm]: size === 'sm',
         [styles.md]: size === 'md',
         [styles.lg]: size === 'lg',
