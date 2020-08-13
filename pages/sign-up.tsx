@@ -20,7 +20,7 @@ import notAuthOrRedirect from '../middleware/not-auth-or-redirect/not-auth-or-re
 import cvm from '../utils/class-validator-map/class-validator-map.util';
 import CreateUser from '../endpoints/user/create/create-user.dto';
 import userService from '../endpoints/user/user.service';
-import GoogleButton from '../components/google-button/google-button';
+import SSOButton from '../components/sso-button/sso-button';
 import Divider from '../components/divider/divider';
 import AppIcon from '../components/app-icon/app-icon';
 
@@ -161,7 +161,7 @@ export default function SignUp() {
               </Button>
 
               <Divider className={styles.action}>Or</Divider>
-              <GoogleButton className={styles.action} />
+              <SSOButton provider="google" className={styles.action} />
               <Divider className={styles.action}>Already have an account?</Divider>
 
               <Link href="/sign-in">

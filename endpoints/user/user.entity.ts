@@ -3,7 +3,7 @@ import md5 from 'md5';
 
 import capitalize from '../../utils/capitalize/capitalize.util';
 
-import UserProvider from './user-provider.enum';
+import UserProvider from './user-provider.type';
 
 export interface IUser {
   readonly _id: string | mongoose.Types.ObjectId;
@@ -22,7 +22,7 @@ export interface IUserDocument extends IUser, mongoose.Document {
 
 const User: mongoose.Model<IUserDocument> = mongoose.models.User || mongoose.model<IUserDocument>('User', new mongoose.Schema<IUserDocument>({
   email: { type: String, unique: true, required: true },
-  provider: { type: UserProvider },
+  provider: { type: String, enum: ['google'] },
   firstName: { type: String, required: true, set: capitalize },
   lastName: { type: String, required: true , set: capitalize },
   image: { type: String },

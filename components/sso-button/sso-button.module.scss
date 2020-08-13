@@ -12,16 +12,18 @@
   cursor: pointer;
   text-transform: uppercase;
 
-  &:hover {
-    background-color: #fff;
-  }
-
-  .logo {
-    height: 25px;
-  }
-
-  .text {
-    font-size: 0.875rem;
-    margin: auto 0 auto 10px;
+  &.google {
+    &:hover {
+      background-color: #fff;
+    }
+  
+    .logo {
+      height: 25px;
+    }
+  
+    .text {
+      font-size: 0.875rem;
+      margin: auto 0 auto 10px;
+    }
   }
 }

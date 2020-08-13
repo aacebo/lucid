@@ -8,6 +8,7 @@ import IGoogleUser from '../../../endpoints/user/google-user.interface';
 import IGoogleUserAccount from '../../../endpoints/user/google-user-account.interface';
 import IGoogleUserProfile from '../../../endpoints/user/google-user-profile.interface';
 import User, { IUserDocument } from '../../../endpoints/user/user.entity';
+import Logger from '../../../helpers/logger/logger.helper';
  
 const options = {
   secret: process.env.JWT_SECRET,
@@ -30,7 +31,7 @@ const options = {
             removedAt: { $eq: undefined },
           });
         } catch (err) {
-          console.error(err);
+          Logger.error(err.toString());
         }
 
         if (user) {
@@ -40,7 +41,7 @@ const options = {
             image: user.image,
           });
         } else {
-          return Promise.reject(new Error('not authorized'));
+          return Promise.resolve(null);
         }
       }
     }),
@@ -59,7 +60,7 @@ const options = {
             provider: gaccount.provider as any,
           }, { upsert: true });
         } catch (err) {
-          console.error(err);
+          Logger.error(err.toString());
         }
       }
 
