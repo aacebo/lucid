@@ -1,4 +1,4 @@
-export default interface IGoogleUserProfile {
+export default interface IGoogleProfile {
   readonly id: string;
   readonly email: string;
   readonly verified_email: boolean;

@@ -4,9 +4,9 @@ import Providers from 'next-auth/providers';
 import mongoose from 'mongoose';
 
 import LoginUser from '../../../endpoints/user/login/login-user.dto';
-import IGoogleUser from '../../../endpoints/user/google-user.interface';
-import IGoogleUserAccount from '../../../endpoints/user/google-user-account.interface';
-import IGoogleUserProfile from '../../../endpoints/user/google-user-profile.interface';
+import ISSOUser from '../../../endpoints/user/sso-user.interface';
+import ISSOAccount from '../../../endpoints/user/sso-account.interface';
+import IGoogleProfile from '../../../endpoints/user/google-profile.interface';
 import User, { IUserDocument } from '../../../endpoints/user/user.entity';
 import Logger from '../../../helpers/logger/logger.helper';
 
@@ -47,8 +47,8 @@ const options = {
     }),
   ],
   callbacks: {
-    signIn: async (_guser: IGoogleUser, gaccount: IGoogleUserAccount, profile: IGoogleUserProfile) => {
-      if (gaccount.provider === 'google') {
+    signIn: async (_user: ISSOUser, account: ISSOAccount, profile: IGoogleProfile) => {
+      if (account.provider === 'google') {
         try {
           const user = await User.findOne({ email: profile.email });
     
@@ -57,7 +57,7 @@ const options = {
             firstName: profile.given_name,
             lastName: profile.family_name,
             image: profile.picture,
-            provider: gaccount.provider as any,
+            provider: account.provider as any,
           }, { upsert: true });
         } catch (err) {
           Logger.error(err.toString());
