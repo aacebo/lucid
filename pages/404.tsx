@@ -4,7 +4,7 @@ import styles from './404.module.scss';
 
 export default function NotFound() {
   return (
-    <div className={styles.container}>
+    <div className={styles.host}>
       <Head>
         <title>Lucid: Not Found</title>
       </Head>

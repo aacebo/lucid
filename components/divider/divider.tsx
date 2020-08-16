@@ -7,7 +7,7 @@ import styles from './divider.module.scss';
 export default function Divider(props: PropsWithChildren<IDividerProps>) {
   return (
     <div className={cn({
-      [styles.container]: true,
+      [styles.host]: true,
       [props.className]: !!props.className,
     })}>
       <div className={styles.left} />

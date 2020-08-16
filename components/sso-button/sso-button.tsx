@@ -28,7 +28,7 @@ export default function SSOButton(props: ISSOButtonProps = { }) {
     <button
       type="button"
       className={cn({
-        [styles.container]: true,
+        [styles.host]: true,
         [props.className]: !!props.className,
         [resource?.className]: !!resource,
       })}

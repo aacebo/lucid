@@ -1,21 +1,34 @@
+import React from 'react';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
+import { withStyles, StyledComponentProps } from '@material-ui/core/styles';
 
 import SSOButton from '../../components/sso-button/sso-button';
+import Sidenav from '../../components/sidenav/sidenav';
 import isAuthOrRedirect from '../../middleware/is-auth-or-redirect/is-auth-or-redirect.middleware';
 
-import styles from './index.module.scss';
+import styles from './index.styles';
 
-export default function UserIndex() {
+function UserIndex(props: StyledComponentProps) {
   const [ session, sessionLoading ] = useSession();
+  const [ sidenavOpen, setSidenavOpen ] = React.useState(true);
 
   return (
-    <div className={styles.container}>
+    <div className={props.classes.host}>
       <Head>
         <title>Lucid: User</title>
       </Head>
 
-      <SSOButton session={session} loading={sessionLoading} />
+      <Sidenav
+        open={sidenavOpen}
+        session={session}
+        onClose={() => setSidenavOpen(false)}
+      >
+        <SSOButton session={session} loading={sessionLoading} />
+        <button onClick={() => setSidenavOpen(!sidenavOpen)}>
+          toggle
+        </button>
+      </Sidenav>
     </div>
   );
 }
@@ -25,3 +38,5 @@ export const getServerSideProps = isAuthOrRedirect(async () => {
     props: { },
   };
 });
+
+export default withStyles(styles)(UserIndex);

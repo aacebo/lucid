@@ -18,8 +18,10 @@ import {
 
 import notAuthOrRedirect from '../middleware/not-auth-or-redirect/not-auth-or-redirect.middleware';
 import cvm from '../utils/class-validator-map/class-validator-map.util';
+
 import CreateUser from '../endpoints/user/create/create-user.dto';
 import userService from '../endpoints/user/user.service';
+
 import SSOButton from '../components/sso-button/sso-button';
 import Divider from '../components/divider/divider';
 import AppIcon from '../components/app-icon/app-icon';
@@ -49,7 +51,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.host}>
       <Head>
         <title>Lucid: Sign Up</title>
       </Head>

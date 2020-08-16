@@ -3,12 +3,12 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import mongoose from 'mongoose';
 
+import Logger from '../../../helpers/logger/logger.helper';
 import LoginUser from '../../../endpoints/user/login/login-user.dto';
 import ISSOUser from '../../../endpoints/user/sso-user.interface';
 import ISSOAccount from '../../../endpoints/user/sso-account.interface';
 import IGoogleProfile from '../../../endpoints/user/google-profile.interface';
 import User, { IUserDocument } from '../../../endpoints/user/user.entity';
-import Logger from '../../../helpers/logger/logger.helper';
 
 const options = {
   secret: process.env.JWT_SECRET,
