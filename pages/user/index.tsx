@@ -22,12 +22,10 @@ function UserIndex(props: StyledComponentProps) {
       <Sidenav
         open={sidenavOpen}
         session={session}
+        onOpen={() => setSidenavOpen(true)}
         onClose={() => setSidenavOpen(false)}
       >
         <SSOButton session={session} loading={sessionLoading} />
-        <button onClick={() => setSidenavOpen(!sidenavOpen)}>
-          toggle
-        </button>
       </Sidenav>
     </div>
   );

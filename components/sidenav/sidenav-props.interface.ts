@@ -6,5 +6,6 @@ export default interface ISidenavProps extends StyledComponentProps {
   readonly className?: string;
   readonly open?: boolean;
   readonly session?: IUserSession;
+  readonly onOpen?: () => void;
   readonly onClose?: () => void;
 }

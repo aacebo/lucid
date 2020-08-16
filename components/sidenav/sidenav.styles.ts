@@ -17,4 +17,10 @@ export default createStyles({
       transition: 'margin-left 0.2s ease-in-out'
     },
   },
+  MenuToggle: {
+    position: 'fixed',
+    top: '1px',
+    left: '1px',
+    zIndex: 1201,
+  }
 });

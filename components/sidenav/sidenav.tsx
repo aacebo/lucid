@@ -1,6 +1,8 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
 import cn from 'classnames';
 
@@ -14,6 +16,13 @@ function Sidenav(props: React.PropsWithChildren<ISidenavProps> = { }) {
       [props.className]: !!props.className,
     })}>
       <nav>
+        <IconButton
+          className={props.classes.MenuToggle}
+          onClick={() => props.open ? props.onClose?.call(this) : props.onOpen?.call(this)}
+        >
+          <Menu />
+        </IconButton>
+
         <Drawer
           anchor="left"
           variant="persistent"
